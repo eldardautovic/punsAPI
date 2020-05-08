@@ -22,7 +22,9 @@ router.get("/random", async (req, res) => {
     let puns = await Project.find();
 
     res.json(puns[randomNum]);
-  } catch (err) {}
+  } catch (err) {
+    res.send({ Error: err });
+  }
 });
 
 //GET by ID
