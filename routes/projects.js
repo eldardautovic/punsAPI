@@ -13,6 +13,18 @@ router.get("/", async (req, res) => {
   }
 });
 
+//GET random ID
+router.get("/random", async (req, res) => {
+  try {
+    let resultsCount = await Project.countDocuments();
+    let randomNum = Math.floor(Math.random() * resultsCount);
+
+    let puns = await Project.find();
+
+    res.json(puns[randomNum]);
+  } catch (err) {}
+});
+
 //GET by ID
 router.get("/:id", async (req, res) => {
   try {
